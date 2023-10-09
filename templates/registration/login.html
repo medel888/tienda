@@ -1,0 +1,42 @@
+{% extends "../store/base.html" %}
+
+{% block content %}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        {% if form.errors %}
+        <p>Su nombre de usuario y contraseña no coinciden. Inténtalo de nuevo.</p>
+        {% endif %}
+
+        {% if next %}
+        {% if user.is_authenticated %}
+        <p>Su cuenta no tiene acceso a esta página. Para continuar, inicie sesión con una cuenta que tenga acceso</p>
+        {% else %}
+        <p>Por favor inicie sesión para ver esta página.</p>
+        {% endif %}
+        {% endif %}
+
+        <div class="bg-light">
+            <form method="post" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <div class="form-label">{{ form.username.label_tag }}</div>
+                    {{ form.username }}
+                </div>
+                <div class="mb-3">
+                    <div class="form-label">{{ form.password.label_tag }}</div>
+                    {{ form.password }}
+                </div>
+                <div class="mb-3">
+                    <input type="submit" value="login" class="btn btn-secondary">
+                    <input type="hidden" name="next" value="{{ next }}">
+                </div>
+            </form>
+
+            {# Assumes you set up the password_reset view in your URLconf #}
+            <div class="mb-3">
+                <p class="h6"><a href="{% url 'password_reset' %}">Lost password?</a></p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
