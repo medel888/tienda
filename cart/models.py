@@ -27,6 +27,10 @@ class Cart(models.Model):
         cart_items = CartItem.objects.filter(cart=self)
         return cart_items
 
+    def get_cart_total_items(self):
+        cart_items = CartItem.objects.filter(cart=self)
+        return cart_items.count()
+
     def add_to_cart(self, product, quantity):
         """
         La función agrega un producto al carrito con la cantidad especificada.
@@ -65,5 +69,19 @@ class CartItem(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE)
     quantity = models.PositiveIntegerField(default=1)
 
+    def get_item_price(self):
+        rel = self.product.price * self.quantity 
+        return rel
+    
+    def add(self):
+        self.quantity = self.quantity + 1
+
     def __str__(self):
+        """
+        La función devuelve una representación de cadena de un objeto CartItem, incluida su
+        identificación, nombre del producto y cantidad.
+        :return: El método `__str__` devuelve una representación de cadena del objeto `CartItem`. La
+        cadena devuelta incluye el "id" del artículo del carrito, el nombre del producto asociado con el
+        artículo del carrito y la cantidad del producto en el artículo del carrito.
+        """
         return f"CartItem {self.id} - Product: {self.product.name}, Quantity: {self.quantity}"

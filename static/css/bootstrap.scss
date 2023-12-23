@@ -1,0 +1,28 @@
+@import "../bootstrap/scss/functions";
+@import "../bootstrap/scss/variables";
+@import "../bootstrap/scss/mixins";
+
+$primary: #4180ab;
+$secondary: #bdd1de;
+
+
+$theme-colors: (
+  "primary":    $primary,
+  "secondary":  $secondary,
+  "success":    $success,
+  "info":       $info,
+  "warning":    $warning,
+  "danger":     $danger,
+  "light":      $light,
+  "dark":       $dark
+);
+
+$custom-colors: (
+  "color-1": #e4ebf0,
+  "color-2": #ebebeb,
+  "color-3": #d7a859,
+);
+
+$theme-colors: map-merge($theme-colors, $custom-colors);
+
+@import "../bootstrap/scss/bootstrap.scss";

@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'store',
     'cart',
+    'customer',
 ]
 
 MIDDLEWARE = [
@@ -131,3 +132,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+LOGIN_URL = 'user/login'
+LOGIN_REDIRECT_URL = 'user/login'

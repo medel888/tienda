@@ -8,9 +8,13 @@ def categories(request):
         'categories' : Category.objects.all()
     }
 
-def all_products(request):
+def home(request):
     products = Product.objects.all()
     return render(request, 'store/home.html', {'products': products}) 
+
+def all_products(request):
+    products = Product.objects.all()
+    return render(request, 'store/store.html', {'products': products}) 
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)

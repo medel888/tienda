@@ -1,0 +1,15 @@
+.img-cart {
+    width: 200px;
+    height: 200px;
+}
+
+.form-qty {
+    width: 50px;
+}
+
+@media only screen and (max-width: 767px) {
+    .img-cart {
+        width: 150px;
+        height: 150px;
+    }
+}

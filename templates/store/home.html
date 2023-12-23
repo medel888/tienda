@@ -1,46 +1,201 @@
 {% extends "./base.html" %}
 {% load static %}
-{% block title %} Home {% endblock  %}
+{% block title %} Home {% endblock %}
 
 {% block content %}
-    <section class="py-5 text-center container">
-        <div class="row py-lg-5">
-            <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="h1 fw-bold">Búsqueda, compra, revisión</h1>
-                <p class="lead text-muted">
-                    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Non explicabo voluptatem asperiores provident animi est, veritatis cumque aliquid nostrum vero!
-                </p>
-                <a href="" class="btn btn-primary my-2">Make an account</a>
+<section class="py-5">
+    <div class="row g-5">
+        <div class="col-xs-12 col-md-3">
+            <div class="p-2 bg-secondary rounded">
+                <img class="img-fluid" src="{% static 'img/home_init.jpg' %}" alt="home_init">
             </div>
         </div>
-    </section>
-
-    <div class="album py-5 bg-light">
-        <div class="container">
-
-            <div class="pb-3 h5">Todos los productos</div>
-            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
-
-                {% for product in products %}
-
-                <div class="col">
-                    <div class="card shadow-sm">
-                        <img src="{{ product.image.url }}" alt="Responsive image" class="img-fluid">
-                        <div class="card-body">
-                            <p class="card-text">
-                                <a href="{{ product.get_absolute_url}}" class="text-dark text-decoration-none">{{ product.name }}</a>
-                            </p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <small class="text-muted">9 minutes read</small>
+        <div class="col-xs-12 col-md-9">
+            <div class="bg-secondary rounded">
+                <div id="carouselHomeIndicators" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-indicators">
+                        <button type="button" data-bs-target="#carouselHomeIndicators" data-bs-slide-to="0"
+                            class="active" aria-current="true" aria-label="Slide 1"></button>
+                        <button type="button" data-bs-target="#carouselHomeIndicators" data-bs-slide-to="1"
+                            aria-label="Slide 2"></button>
+                        <button type="button" data-bs-target="#carouselHomeIndicators" data-bs-slide-to="2"
+                            aria-label="Slide 3"></button>
+                    </div>
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="{% static 'img/slide-1.jpg' %}" class="d-block w-100" alt="slide-1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/slide-2.jpg' %}" class="d-block w-100" alt="slide-2">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="{% static 'img/slide-3.jpg' %}" class="d-block w-100" alt="slide-3">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselHomeIndicators"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselHomeIndicators"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="p-3 bg-secondary rounded">
+                <h2 class="text-primary fw-bold">Categorías</h2>
+                {% for c in categories %}
+                <a class="m-1 btn btn-outline-primary rounded-pill" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="p-3 bg-secondary rounded">
+                <h2 class="text-primary fw-bold">Novedades y Lanzamientos</h2>
+                <div class="row g-2 py-5">
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                {% endfor %}
-
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="p-3 bg-secondary rounded">
+                <h2 class="text-primary fw-bold">Productos mas vendidos</h2>
+                <div class="row g-2 py-5">
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-md-2">
+                        <div class="card p-1 border border-primary bg-color-1">
+                            <img src="{% static 'img/ejemplo.jpg' %}" class="card-img-top" alt="...">
+                            <div class="card-body p-1">
+                                <h5 class="card-title m-0">Card title</h5>
+                                <div class="row">
+                                    <div class="col-6">
+                                        <p class="card-text m-0">$ 00.000</p>
+                                    </div>
+                                    <div class="col-6">
+                                        <a href="#" class="btn btn-secondary">Agregar</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-{% endblock  %}
 
+</section>
+{% endblock %}
